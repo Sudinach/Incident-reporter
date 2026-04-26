@@ -28,11 +28,11 @@ export function IncidentForm({ initialValues, incidentId }: Props) {
   const router = useRouter();
   const isEdit = incidentId !== undefined;
   const [submitError, setSubmitError] = useState<string | null>(null);
-  const formRef = useRef<HTMLFormElement>(null);
 
   const {
     register,
     handleSubmit,
+    setFocus,
     formState: { errors, isSubmitting },
   } = useForm<IncidentFormValues>({
     resolver: zodResolver(incidentSchema),
@@ -72,17 +72,12 @@ export function IncidentForm({ initialValues, incidentId }: Props) {
   };
 
   const onInvalid = (errs: FieldErrors<IncidentFormValues>) => {
-    const firstErrorName = Object.keys(errs)[0];
-    if (!firstErrorName) return;
-    const el = formRef.current?.querySelector<HTMLElement>(
-      `[name="${firstErrorName}"]`,
-    );
-    el?.focus();
+    const firstErrorName = Object.keys(errs)[0] as keyof IncidentFormValues | undefined;
+    if (firstErrorName) setFocus(firstErrorName);
   };
 
   return (
     <form
-      ref={formRef}
       onSubmit={handleSubmit(onValid, onInvalid)}
       noValidate
       aria-labelledby="form-heading"

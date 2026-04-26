@@ -1,13 +1,20 @@
 import { ReactElement, cloneElement } from "react";
 import { Label } from "@/components/atoms/Label";
 
+type InjectedFieldProps = {
+  id?: string;
+  "aria-invalid"?: boolean;
+  "aria-describedby"?: string;
+  "aria-required"?: boolean;
+};
+
 type Props = {
   id: string;
   label: string;
   required?: boolean;
   error?: string;
   hint?: string;
-  children: ReactElement<any>;
+  children: ReactElement<InjectedFieldProps>;
 };
 
 export function FormField({ id, label, required, error, hint, children }: Props) {
