@@ -14,9 +14,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="min-h-screen bg-slate-50 text-slate-900 antialiased">
-        <header className="border-b border-slate-200 bg-blue-600">
+        <a 
+          href="#main-content"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-blue-700 focus:px-4 focus:py-2 focus:text-sm focus:font-medium focus:text-white focus:shadow-lg"
+        >
+          Skip to main content
+        </a>
+        <header className="border-b border-slate-200 bg-white">
           <div className="mx-auto max-w-5xl px-6 py-4">
-            <h1 className="text-lg font-semibold tracking-tight text-white">
+            <h1 className="text-lg font-semibold tracking-tight">
               Incident Reporter
             </h1>
           </div>

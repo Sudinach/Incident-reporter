@@ -7,7 +7,7 @@ export default async function IncidentsPage() {
 
   return (
     <section aria-labelledby="incidents-heading">
-      <div className="mb-6 flex items-center justify-between">
+      <div className="mb-6 flex items-center justify-between bg-blue">
         <h2 id="incidents-heading" className="text-2xl font-semibold tracking-tight">
           Incidents
         </h2>

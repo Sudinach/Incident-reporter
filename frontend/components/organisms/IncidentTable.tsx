@@ -3,6 +3,7 @@ import type { Incident } from "@/lib/types";
 import { INCIDENT_TYPE_LABELS } from "@/lib/types";
 import { SeverityBadge } from "@/components/atoms/SeverityBadge";
 import { StatusBadge } from "@/components/atoms/StatusBadge";
+import { IncidentRowActions } from "@/components/molecules/IncidentRowActions";
 
 function formatDate(iso: string): string {
   return new Date(iso).toLocaleDateString("en-AU", {
@@ -15,7 +16,7 @@ function formatDate(iso: string): string {
 export function IncidentTable({ incidents }: { incidents: Incident[] }) {
   if (incidents.length === 0) {
     return (
-           <div className="rounded-lg border border-dashed border-slate-300 bg-white p-12 text-center">
+      <div className="rounded-lg border border-dashed border-slate-300 bg-white p-12 text-center">
         <p className="text-slate-700">No incidents reported yet.</p>
         <Link
           href="/incidents/new"
@@ -68,13 +69,10 @@ export function IncidentTable({ incidents }: { incidents: Incident[] }) {
                 <StatusBadge status={incident.status} />
               </td>
               <td className="whitespace-nowrap px-4 py-3 text-right text-sm">
-                <Link
-                  href={`/incidents/${incident.id}/edit`}
-                  className="rounded font-medium text-blue-700 underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
-                >
-                  Edit
-                  <span className="sr-only"> incident reported by {incident.workerName}</span>
-                </Link>
+                <IncidentRowActions
+                  incidentId={incident.id}
+                  workerName={incident.workerName}
+                />
               </td>
             </tr>
           ))}
