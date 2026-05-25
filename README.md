@@ -37,7 +37,7 @@ Delete Incident
 
 ### Prerequisites
 - [.NET 10 SDK](https://dotnet.microsoft.com/download)
-- [Node.js 22+](https://nodejs.org/) (the project was developed against 25.x)
+- [Node.js 22+](https://nodejs.org/)
 - `dotnet-ef` global tool: `dotnet tool install --global dotnet-ef`
 
 ### 1. Clone
